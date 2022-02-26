@@ -17,7 +17,22 @@ class CustomInfo(commands.Cog):
     
     __author__ = ["JeffJrShim"]
     __version__ = "1.0.0"
+    
+    def __init__(self, bot):
+        self.bot = bot
+        if not hasattr(commands.Context, "sendi"):
+            commands.Context.sendi = send_with_components
 
+    def cog_unload(self):
+        global info_com
+        global invite_com
+        if info_com:
+            try:
+                self.bot.remove_command("info")
+            except Exception as e:
+                log.info(e)
+        self.bot.add_command(info_com)
+        
     @commands.command()
     async def info(self, ctx):
         owner = self.bot.get_user(550984303526281219)
