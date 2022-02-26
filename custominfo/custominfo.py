@@ -39,7 +39,7 @@ class CustomInfo(commands.Cog):
         org_repo = "https://github.com/Cog-Creators"
         red_repo = org_repo + "/Red-DiscordBot"
         red_pypi = "https://pypi.org/project/Red-DiscordBot"
-        support_server_url = "https://discord.gg/RSAetqdhRU"
+        support_server_url = "https://discord.gg/wgSA5VkYCa"
         dpy_repo = "https://github.com/Rapptz/discord.py"
         python_url = "https://www.python.org/"
         since = datetime.datetime(2016, 1, 2, 0, 0)
