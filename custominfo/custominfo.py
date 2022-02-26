@@ -47,7 +47,6 @@ class CustomInfo(commands.Cog):
         python_version = "[`{}.{}.{}`]({})".format(*sys.version_info[:3], python_url)
         dpy_version = "[`{}`]({})".format(discord.__version__, dpy_repo)
         red_version = "[`{}`]({})".format(version_info, red_pypi)
-        jef = self.bot.get_user(726802094371242074)
         embed = discord.Embed(color=await ctx.embed_color())
         embed.add_field(name=f"{ctx.me.name}'s Owner", value=owner)
         embed.add_field(
@@ -56,7 +55,7 @@ class CustomInfo(commands.Cog):
         )
         embed.add_field(
             name=f"About {ctx.me.name}",
-            value=f"{ctx.me.name} is an instance of [Red, an open source Discord bot]({red_repo}) created by [Twentysix]({author_repo}) and improved by many with many 3rd party cogs, written by many other Cog Creators, and {jef.name} himself. Please do not bother Red's support server with inquiries regarding this bot, please use the [support server]({support_server_url}), instead. \n\nRed is backed by a passionate community who contributes and creates content for everyone to enjoy. Join us today and help us improve!\n\n(c) Cog Creators, and {jef.name}",
+            value=f"{ctx.me.name} is an instance of [Red, an open source Discord bot]({red_repo}) created by [Twentysix]({author_repo}) and improved by many with many 3rd party cogs, written by many other Cog Creators, and {owner.name} himself. Please do not bother Red's support server with inquiries regarding this bot, please use the [support server]({support_server_url}), instead. \n\nRed is backed by a passionate community who contributes and creates content for everyone to enjoy. Join us today and help us improve!\n\n(c) Cog Creators, and {owner.name}",
             inline=False,
         )
         embed.set_thumbnail(url=ctx.me.avatar_url)
