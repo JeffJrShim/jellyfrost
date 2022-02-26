@@ -1,7 +1,7 @@
 {
     "author": ["JeffJrShim#2396"],
     "name": "CustomInfo",
-    "install_msg": "https://discord.gg/RSAetqdhRU",
+    "install_msg": "Join https://discord.gg/RSAetqdhRU for support.",
     "description": "Toli's information cog.",
     "short": "Toli's information cog",
     "end_user_data_statement": "This cog does not persistently store any data about users",
