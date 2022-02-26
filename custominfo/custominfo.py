@@ -20,8 +20,6 @@ class CustomInfo(commands.Cog):
     
     def __init__(self, bot):
         self.bot = bot
-        if not hasattr(commands.Context, "sendi"):
-            commands.Context.sendi = send_with_components
 
     def cog_unload(self):
         global info_com
