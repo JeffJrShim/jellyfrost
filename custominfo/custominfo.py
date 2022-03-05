@@ -14,14 +14,15 @@ from dislash.application_commands._modifications.old import (
 )
 from dislash.interactions import ActionRow, Button, ButtonStyle
 
+
 class CustomInfo(commands.Cog):
     """
     A cog for information on Toli.
     """
-    
+
     __author__ = ["JeffJrShim"]
     __version__ = "1.0.0"
-    
+
     def __init__(self, bot):
         self.bot = bot
         if not hasattr(commands.Context, "sendi"):
@@ -36,7 +37,7 @@ class CustomInfo(commands.Cog):
             except Exception as e:
                 log.info(e)
         self.bot.add_command(info_com)
-        
+
     @commands.command()
     async def info(self, ctx):
         owner = self.bot.get_user(726802094371242074)
@@ -54,11 +55,29 @@ class CustomInfo(commands.Cog):
         dpy_version = "[`{}`]({})".format(discord.__version__, dpy_repo)
         red_version = "[`{}`]({})".format(version_info, red_pypi)
         embed = discord.Embed(color=await ctx.embed_color())
-        embed.add_field(name=f":wave: Hi, I am {ctx.me.name}!", value=f"I am currently running on version **__{red_version}__**", inline=False)
-        embed.add_field(name=f"Support Server",value=f"Join me on my support server: [Toli Support]({support_server_url})", inline=False)
-        embed.add_field(name=f"Invite me to your Server", value=f"Here is a link to invite me to your guild as well: [Toli invite link](https://discord.com/api/oauth2/authorize?client_id=943931974568001546&permissions=0&scope=bot)", inline=False)
-        embed.add_field(name=f"I am listed in follow bot lists:", value=f"✅[DBL (top.gg)](https://top.gg/bot/943931974568001546)\n✅ [Discord Bots](https://discord.bots.gg/bots/943931974568001546)\n✅ [discordbotlist.com](https://discordbotlist.com/bots/toli)\n✅ [Bots on Discord](https://bots.ondiscord.xyz/bots/943931974568001546)\n✅ [Bots for Discord](https://botsfordiscord.com/bot/943931974568001546)", inline=False)
-        embed.add_field(name="‌",value=f"I am on **{len(self.bot.guilds)}** guilds!", inline=False)
+        embed.add_field(
+            name=f":wave: Hi, I am {ctx.me.name}!",
+            value=f"I am currently running on version **__{red_version}__**",
+            inline=False,
+        )
+        embed.add_field(
+            name=f"Support Server",
+            value=f"Join me on my support server: [Toli Support]({support_server_url})",
+            inline=False,
+        )
+        embed.add_field(
+            name=f"Invite me to your Server",
+            value=f"Here is a link to invite me to your guild as well: [Toli invite link](https://discord.com/api/oauth2/authorize?client_id=943931974568001546&permissions=0&scope=bot)",
+            inline=False,
+        )
+        embed.add_field(
+            name=f"I am listed in follow bot lists:",
+            value=f"✅[DBL (top.gg)](https://top.gg/bot/943931974568001546)\n✅ [Discord Bots](https://discord.bots.gg/bots/943931974568001546)\n✅ [discordbotlist.com](https://discordbotlist.com/bots/toli)\n✅ [Bots on Discord](https://bots.ondiscord.xyz/bots/943931974568001546)\n✅ [Bots for Discord](https://botsfordiscord.com/bot/943931974568001546)",
+            inline=False,
+        )
+        embed.add_field(
+            name="‌", value=f"I am on **{len(self.bot.guilds)}** guilds!", inline=False
+        )
         embed.set_thumbnail(url=ctx.me.avatar_url)
         row = ActionRow(
             Button(
@@ -70,33 +89,33 @@ class CustomInfo(commands.Cog):
                 style=ButtonStyle.link,
                 label=f"{ctx.me.name}'s Invite Link",
                 url="https://discord.com/api/oauth2/authorize?client_id=943931974568001546&permissions=0&scope=bot",
-            )
+            ),
         )
         row2 = ActionRow(
             Button(
                 style=ButtonStyle.link,
                 label=f"DBL (Top.gg)",
-                url="https://top.gg/bot/943931974568001546"
+                url="https://top.gg/bot/943931974568001546",
             ),
             Button(
                 style=ButtonStyle.link,
                 label=f"Discord Bots",
-                url="https://discord.bots.gg/bots/943931974568001546"
+                url="https://discord.bots.gg/bots/943931974568001546",
             ),
             Button(
                 style=ButtonStyle.link,
                 label=f"discordbotlist.com",
-                url="https://discordbotlist.com/bots/toli"
+                url="https://discordbotlist.com/bots/toli",
             ),
             Button(
                 style=ButtonStyle.link,
                 label=f"Bots on Discord",
-                url="https://bots.ondiscord.xyz/bots/943931974568001546"
+                url="https://bots.ondiscord.xyz/bots/943931974568001546",
             ),
             Button(
                 style=ButtonStyle.link,
                 label=f"Bots for Discord",
-                url="https://top.gg/bot/943931974568001546"
+                url="https://top.gg/bot/943931974568001546",
             ),
         )
-        await ctx.sendi(embed=embed, reference=ctx.message.to_reference(), components=[row,row2])
+        await ctx.sendi(embed=embed, reference=ctx.message.to_reference(), components=[row, row2])
