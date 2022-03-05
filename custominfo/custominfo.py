@@ -12,6 +12,7 @@ import sys
 from dislash.application_commands._modifications.old import (
     send_with_components,
 )
+from dislash.interactions import ActionRow, Button, ButtonStyle
 
 class CustomInfo(commands.Cog):
     """
