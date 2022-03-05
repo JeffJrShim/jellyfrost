@@ -99,4 +99,4 @@ class CustomInfo(commands.Cog):
                 url="https://top.gg/bot/943931974568001546"
             ),
         )
-        await ctx.sendi(embed=embed, reference=ctx.message.to_reference(), components=[row])
+        await ctx.sendi(embed=embed, reference=ctx.message.to_reference(), components=[row,row2])
