@@ -9,6 +9,9 @@ from redbot.core.utils.chat_formatting import box, humanize_list
 from redbot import version_info
 import datetime
 import sys
+from dislash.application_commands._modifications.old import (
+    send_with_components,
+)
 
 class CustomInfo(commands.Cog):
     """
@@ -20,6 +23,8 @@ class CustomInfo(commands.Cog):
     
     def __init__(self, bot):
         self.bot = bot
+        if not hasattr(commands.Context, "sendi"):
+            commands.Context.sendi = send_with_components
 
     def cog_unload(self):
         global info_com
