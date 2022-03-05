@@ -70,7 +70,9 @@ class CustomInfo(commands.Cog):
                 style=ButtonStyle.link,
                 label=f"{ctx.me.name}'s Invite Link",
                 url="https://discord.com/api/oauth2/authorize?client_id=943931974568001546&permissions=0&scope=bot",
-            ),
+            )
+        )
+        row2 = ActionRow(
             Button(
                 style=ButtonStyle.link,
                 label=f"DBL (Top.gg)",
@@ -96,9 +98,5 @@ class CustomInfo(commands.Cog):
                 label=f"Bots for Discord",
                 url="https://top.gg/bot/943931974568001546"
             ),
-            
-            
-            
-            
         )
         await ctx.sendi(embed=embed, reference=ctx.message.to_reference(), components=[row])
