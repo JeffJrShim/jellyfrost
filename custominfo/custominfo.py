@@ -38,7 +38,7 @@ class CustomInfo(commands.Cog):
         
     @commands.command()
     async def info(self, ctx):
-        owner = bot.get_user(726802094371242074)
+        owner = self.bot.get_user(726802094371242074)
         embed_links = await ctx.embed_requested()
         author_repo = "https://github.com/Twentysix26"
         org_repo = "https://github.com/Cog-Creators"
