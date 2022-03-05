@@ -52,7 +52,7 @@ class CustomInfo(commands.Cog):
         python_version = "[`{}.{}.{}`]({})".format(*sys.version_info[:3], python_url)
         dpy_version = "[`{}`]({})".format(discord.__version__, dpy_repo)
         red_version = "[`{}`]({})".format(version_info, red_pypi)
-        embed = discord.Embed(description=f"**:wave: Hi, I am {ctx.me.name}!**\nI am currently running on version **__{red_version}__**\n**Support Server**\nJoin me on my support server: [Toli Support]({support_server_url})\n**Invite me to your Server**\nHere is a link to invite me to your guild as well: [Toli invite link](https://discord.com/api/oauth2/authorize?client_id=943931974568001546&permissions=0&scope=bot)\n**I am listed in follow bot lists:**\n:white_check_mark: [DBL (top.gg)](https://top.gg/bot/943931974568001546)\n✅ [Discord Bots](https://discord.bots.gg/bots/943931974568001546)\n✅ [discordbotlist.com](https://discordbotlist.com/bots/toli)\n✅ [Bots on Discord](https://bots.ondiscord.xyz/bots/943931974568001546)\n✅ [Bots for Discord](https://botsfordiscord.com/bot/943931974568001546)\nI am on **{len(self.bot.guilds)}** guilds!" ,color=await ctx.embed_color())
+        embed = discord.Embed(color=await ctx.embed_color())
         embed.add_field(name=f":wave: Hi, I am {ctx.me.name}!", value=f"I am currently running on version **__{red_version}__**")
         embed.add_field(name=f"Support Server",value=f"Join me on my support server: [Toli Support]({support_server_url})")
         embed.add_field(name=f"Invite me to your Server", value=f"Here is a link to invite me to your guild as well: [Toli invite link](https://discord.com/api/oauth2/authorize?client_id=943931974568001546&permissions=0&scope=bot)")
