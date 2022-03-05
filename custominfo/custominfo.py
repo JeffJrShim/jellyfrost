@@ -59,4 +59,45 @@ class CustomInfo(commands.Cog):
         embed.add_field(name=f"I am listed in follow bot lists:", value=f"✅[DBL (top.gg)](https://top.gg/bot/943931974568001546)\n✅ [Discord Bots](https://discord.bots.gg/bots/943931974568001546)\n✅ [discordbotlist.com](https://discordbotlist.com/bots/toli)\n✅ [Bots on Discord](https://bots.ondiscord.xyz/bots/943931974568001546)\n✅ [Bots for Discord](https://botsfordiscord.com/bot/943931974568001546)", inline=False)
         embed.add_field(name="‌",value=f"I am on **{len(self.bot.guilds)}** guilds!", inline=False)
         embed.set_thumbnail(url=ctx.me.avatar_url)
-        await ctx.send(embed=embed, reference=ctx.message.to_reference())
+        row = ActionRow(
+            Button(
+                style=ButtonStyle.link,
+                label=f"{ctx.me.name}'s support server",
+                url="https://discord.gg/wgSA5VkYCa",
+            ),
+            Button(
+                style=ButtonStyle.link,
+                label=f"{ctx.me.name}'s Invite Link",
+                url="https://discord.com/api/oauth2/authorize?client_id=943931974568001546&permissions=0&scope=bot",
+            ),
+            Button(
+                style=ButtonStyle.link,
+                label=f"DBL (Top.gg)",
+                url="https://top.gg/bot/943931974568001546"
+            ),
+            Button(
+                style=ButtonStyle.link,
+                label=f"Discord Bots",
+                url="https://discord.bots.gg/bots/943931974568001546"
+            ),
+            Button(
+                style=ButtonStyle.link,
+                label=f"discordbotlist.com",
+                url="https://discordbotlist.com/bots/toli"
+            ),
+            Button(
+                style=ButtonStyle.link,
+                label=f"Bots on Discord",
+                url="https://bots.ondiscord.xyz/bots/943931974568001546"
+            ),
+            Button(
+                style=ButtonStyle.link,
+                label=f"Bots for Discord",
+                url="https://top.gg/bot/943931974568001546"
+            ),
+            
+            
+            
+            
+        )
+        await ctx.sendi(embed=embed, reference=ctx.message.to_reference(), components=[row])
