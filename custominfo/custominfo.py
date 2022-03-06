@@ -78,7 +78,7 @@ class CustomInfo(commands.Cog):
         embed.add_field(
             name="‌", value=f"I am on **{len(self.bot.guilds)}** guilds!", inline=False
         )
-        embed.set_thumbnail(url=ctx.me.avatar_url)
+        embed.set_thumbnail(url=ctx.me.avatar.url)
         row = ActionRow(
             Button(
                 style=ButtonStyle.link,
