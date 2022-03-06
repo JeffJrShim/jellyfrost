@@ -9,17 +9,24 @@ from redbot.core.utils.chat_formatting import box, humanize_list
 from redbot import version_info
 import datetime
 import sys
+from dislash.application_commands._modifications.old import (
+    send_with_components,
+)
+from dislash.interactions import ActionRow, Button, ButtonStyle
+
 
 class CustomInfo(commands.Cog):
     """
     A cog for information on Toli.
     """
-    
+
     __author__ = ["JeffJrShim"]
     __version__ = "1.0.0"
-    
+
     def __init__(self, bot):
         self.bot = bot
+        if not hasattr(commands.Context, "sendi"):
+            commands.Context.sendi = send_with_components
 
     def cog_unload(self):
         global info_com
@@ -30,7 +37,7 @@ class CustomInfo(commands.Cog):
             except Exception as e:
                 log.info(e)
         self.bot.add_command(info_com)
-        
+
     @commands.command()
     async def info(self, ctx):
         owner = self.bot.get_user(726802094371242074)
@@ -48,15 +55,67 @@ class CustomInfo(commands.Cog):
         dpy_version = "[`{}`]({})".format(discord.__version__, dpy_repo)
         red_version = "[`{}`]({})".format(version_info, red_pypi)
         embed = discord.Embed(color=await ctx.embed_color())
-        embed.add_field(name=f"{ctx.me.name}'s Owner", value=owner)
         embed.add_field(
-            name="Versions",
-            value=f"<:Python:928926404077289533> {python_version}\n<:dpy:926811146101596222> {dpy_version}\n<:red:926316873400872990> {red_version}",
-        )
-        embed.add_field(
-            name=f"About {ctx.me.name}",
-            value=f"{ctx.me.name} is an instance of [Red, an open source Discord bot]({red_repo}) created by [Twentysix]({author_repo}) and improved by many with many 3rd party cogs, written by many other Cog Creators, and {owner.name} himself. Please do not bother Red's support server with inquiries regarding this bot, please use the [support server]({support_server_url}), instead. \n\nRed is backed by a passionate community who contributes and creates content for everyone to enjoy. Join us today and help us improve!\n\n(c) Cog Creators, and {owner.name}",
+            name=f":wave: Hi, I am {ctx.me.name}!",
+            value=f"I am currently running on version **__{red_version}__**",
             inline=False,
         )
+        embed.add_field(
+            name=f"Support Server",
+            value=f"Join me on my support server: [Toli Support]({support_server_url})",
+            inline=False,
+        )
+        embed.add_field(
+            name=f"Invite me to your Server",
+            value=f"Here is a link to invite me to your guild as well: [Toli invite link](https://discord.com/api/oauth2/authorize?client_id=943931974568001546&permissions=0&scope=bot)",
+            inline=False,
+        )
+        embed.add_field(
+            name=f"I am listed in follow bot lists:",
+            value=f"✅[DBL (top.gg)](https://top.gg/bot/943931974568001546)\n✅ [Discord Bots](https://discord.bots.gg/bots/943931974568001546)\n✅ [discordbotlist.com](https://discordbotlist.com/bots/toli)\n✅ [Bots on Discord](https://bots.ondiscord.xyz/bots/943931974568001546)\n✅ [Bots for Discord](https://botsfordiscord.com/bot/943931974568001546)",
+            inline=False,
+        )
+        embed.add_field(
+            name="‌", value=f"I am on **{len(self.bot.guilds)}** guilds!", inline=False
+        )
         embed.set_thumbnail(url=ctx.me.avatar_url)
-        await ctx.send(embed=embed, reference=ctx.message.to_reference())
+        row = ActionRow(
+            Button(
+                style=ButtonStyle.link,
+                label=f"{ctx.me.name}'s support server",
+                url="https://discord.gg/wgSA5VkYCa",
+            ),
+            Button(
+                style=ButtonStyle.link,
+                label=f"{ctx.me.name}'s Invite Link",
+                url="https://discord.com/api/oauth2/authorize?client_id=943931974568001546&permissions=0&scope=bot",
+            ),
+        )
+        row2 = ActionRow(
+            Button(
+                style=ButtonStyle.link,
+                label=f"DBL (Top.gg)",
+                url="https://top.gg/bot/943931974568001546",
+            ),
+            Button(
+                style=ButtonStyle.link,
+                label=f"Discord Bots",
+                url="https://discord.bots.gg/bots/943931974568001546",
+            ),
+            Button(
+                style=ButtonStyle.link,
+                label=f"discordbotlist.com",
+                url="https://discordbotlist.com/bots/toli",
+            ),
+            Button(
+                style=ButtonStyle.link,
+                label=f"Bots on Discord",
+                url="https://bots.ondiscord.xyz/bots/943931974568001546",
+            ),
+            Button(
+                style=ButtonStyle.link,
+                label=f"Bots for Discord",
+                url="https://top.gg/bot/943931974568001546",
+            ),
+        )
+        await ctx.sendi(embed=embed, reference=ctx.message.to_reference(), components=[row, row2])
